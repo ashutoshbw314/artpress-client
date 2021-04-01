@@ -7,6 +7,7 @@ import HomePage from './HomePage/HomePage';
 import SignInPage from './SignInPage/SignInPage';
 import SignUpPage from './SignUpPage/SignUpPage';
 import AdminPage from './AdminPage/AdminPage';
+import CheckoutPage from './CheckoutPage/CheckoutPage';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           <Route exact path='/signup' component={SignUpPage} />
           <PrivateRoute exact path='/admin'>
             <AdminPage />
+          </PrivateRoute>
+          <PrivateRoute exact path='/checkout/:id'>
+            <CheckoutPage />
           </PrivateRoute>
         </Switch>
       </Router>

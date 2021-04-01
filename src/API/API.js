@@ -1,7 +1,11 @@
-const BASE_API_URL = 'https://mysterious-springs-04255.herokuapp.com/api';
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL;
 
-export const getAllProducts = (id = '') => {
+export const getAllProducts = () => {
   return fetch(BASE_API_URL + `/products/all`).then(res => res.json())
+};
+
+export const getProduct = (id) => {
+  return fetch(BASE_API_URL + `/products/${id}`).then(res => res.json())
 };
 
 export const addProduct = (productData) => {

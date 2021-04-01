@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function ProductCard({data}) {
   return (
@@ -13,7 +14,9 @@ function ProductCard({data}) {
           <div className='text-2xl text-blue-500'>
             ${data.price}
           </div>
-          <button className='block px-3 py-2 rounded-lg transform transition bg-blue-500 hover:bg-blue-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow  cursor-pointer '>Buy Now</button>
+          <Link to={`/checkout/${data._id}`}>
+            <button className='block px-3 py-2 rounded-lg transform transition bg-blue-500 hover:bg-blue-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow  cursor-pointer '>Buy Now</button>
+          </Link>
         </div>
       </div>
     </div>
