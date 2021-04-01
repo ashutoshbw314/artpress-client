@@ -1,11 +1,11 @@
-const BASE_API_URL = 'http://localhost:3000';
+const BASE_API_URL = 'https://mysterious-springs-04255.herokuapp.com/api';
 
 export const getAllProducts = (id = '') => {
-  return fetch(BASE_API_URL + `/api/products/all`).then(res => res.json())
+  return fetch(BASE_API_URL + `/products/all`).then(res => res.json())
 };
 
 export const addProduct = (productData) => {
-  return fetch(BASE_API_URL + '/api/product', {
+  return fetch(BASE_API_URL + '/product', {
     method: "POST",
     headers: {
       "Accept": "application/json",
