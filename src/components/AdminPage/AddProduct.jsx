@@ -1,0 +1,158 @@
+import React, {useState, useEffect, useRef} from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import {addProduct} from '../../API/API';
+
+function AddProduct() {
+  const auth = useAuth();
+  const [fileError, setFileError] = useState("");
+  const [fileName, setFileName] = useState("");
+  const schema = yup.object().shape({
+    productName: yup.
+      string().
+      trim().
+      required('Name of artwork is a required field'),
+    artistName: yup.
+      string().
+      trim().
+      required("Artist's name is a required field"),
+    price: yup.
+      number().
+      typeError('Price must be a number').
+      required("Please provide a price.").
+      min(5, "Too little").
+      max(5000, 'Very costly!'),
+  });
+  {/*useEffect(() => {
+    const fetchBooks = async () => {
+      const res = await fetch(`http://localhost:3000/api/all`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${sessionStorage.getItem("token")}`
+        }
+      });
+      const books = await res.json();
+      setBooks(books);
+    }
+    setTimeout(fetchBooks, 500);
+  }, [])*/}
+
+  const fileRef = useRef(null);
+  const {register, handleSubmit, errors} = useForm({
+    mode: 'onTouched',
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async data => {
+    if (fileRef.current.files.length == 0) {
+      setFileError("Please provide a photo of your art work.")
+    } else {
+      setFileError("")
+      const imageData = new FormData();
+      imageData.set("key", "5faa7f167ad100e10e4218fa2160a9d4");
+      imageData.append("image", fileRef.current.files[0]);
+
+      axios.post('https://api.imgbb.com/1/upload', imageData)
+      .then(function (response) {
+        data.imgURL = response.data.data.display_url;
+        data.uid = auth.user.uid;
+        addProduct(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  };
+
+  const handleImageUpload = event => {
+    console.log(event.target.files[0])
+    const imageData = new FormData();
+    imageData.set("key", "5faa7f167ad100e10e4218fa2160a9d4");
+    imageData.append("image", event.target.files[0]);
+
+    axios.post('https://api.imgbb.com/1/upload', imageData)
+    .then(function (response) {
+      console.log(response.data.data.display_url);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  return (
+    <div>
+      <h1>Add your Art piece</h1>
+          <form 
+            className='space-y-3'
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <label className='block'>
+              <span className=''>Name of Artwork</span>
+              <input 
+                className=''
+                name="productName"
+                ref={register}
+                type="text"
+                placeholder="Enter name of artwork"
+              />
+              {errors.productName && <p className='px-2 text-sm text-red-500'>{errors.productName.message}</p>}
+            </label>
+            <label className='block'>
+              <span className=''>Artist's Name</span>
+              <input 
+                className=''
+                name="artistName"
+                ref={register}
+                type="text"
+                placeholder="Enter the name of artist"
+              />
+              {errors.artistName && <p className='px-2 text-sm text-red-500'>{errors.artistName.message}</p>}
+            </label>
+            <label className='block'>
+              <span className=''>Price</span>
+              <input 
+                className=''
+                name="price"
+                ref={register}
+                type="number"
+                placeholder="Enter the price of artwork"
+              />
+              {errors.price && <p className='px-2 text-sm text-red-500'>{errors.price.message}</p>}
+            </label>
+            <label className='block'>
+              
+              <p className='flex block p-3 rounded-lg transform transition bg-indigo-100 hover:bg-indigo-200 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider shadow cursor-pointer w-full'>
+                <svg className='w-6 mr-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <span>Upload photo</span>
+              </p>
+              <input 
+                className=''
+                name="photoFile"
+                type="file"
+                placeholder="Enter the price of artwork"
+                ref={fileRef}
+                style={{opacity: '0', width: '0.1px', height: '0.1px', position: 'absolute'}}
+                onChange={() => setFileName(fileRef.current.files[0].name)}
+              />
+              {fileError && <p className='px-2 text-sm text-red-500'>{fileError}</p>}
+              {fileName && <p className='px-2 text-md'>{fileName}</p>}
+            </label>
+            <input
+              className='block py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer w-full'
+              type='submit'
+              value='Save'/>
+          </form>
+    </div>
+  )
+}
+
+export default AddProduct;
