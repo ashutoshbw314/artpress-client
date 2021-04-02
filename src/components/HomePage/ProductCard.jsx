@@ -4,10 +4,10 @@ import {Link} from "react-router-dom";
 function ProductCard({data}) {
   return (
     <div>
-      <div className='flex flex-col items-center p-2 overflow-hidden border-2 border-indigo-800 rounded-lg shadow-lg bg-card border-opacity-90 hover:scale-110 hover:border-indigo-800 transform transition-all bg-opacity-90'>
-        <img className='flex-shrink-0 h-64 lg:object-contain' src={data.imageURL} alt={data.name} />
+      <div className='flex flex-col items-center p-2 overflow-hidden border-2 border-indigo-400 rounded-lg shadow-lg border-opacity-90 hover:scale-110 hover:border-indigo-800 transform transition-all bg-opacity-90'>
+        <img className='flex-shrink-0 object-cover h-64 lg:object-contain' src={data.imageURL} alt={data.name} />
         <div className='self-start py-1'>
-          <h3 className="text-lg font-semibold text-gray-800 uppercase">{data.name}</h3>
+          <h3 className="text-lg font-semibold text-gray-800">{data.name}</h3>
           <p>By <i>{data.artistName}</i></p>
         </div>
         <div className='flex justify-between w-full'>

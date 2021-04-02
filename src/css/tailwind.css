@@ -22,10 +22,6 @@
   height: calc(100vh - 104px);
 }
 
-.bg-card {
-  background-color: #d6f5f0;
-}
-
 @layer base {
   [type='text'],
   [type='email'],

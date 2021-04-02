@@ -126,9 +126,9 @@ function SignIn() {
           </form>
         </div>
         <div className='flex items-center justify-center w-full my-3'>
-          <hr className='inline-block w-full ml-12 mr-1 border-indigo-800'/>
+          <hr className='inline-block w-full ml-12 mr-1 border-gray-400'/>
           <span className='text-gray-700'>Or</span>
-          <hr className='inline-block w-full ml-1 mr-12 border-indigo-800' />
+          <hr className='inline-block w-full ml-1 mr-12 border-gray-400' />
         </div>
         <div 
           className='block py-1 rounded-full transform transition border bg-white bg-opacity-75 border-indigo-300  hover:bg-gray-100 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider text-sm text-gray-700 shadow cursor-pointer w-3/4 mx-auto text-sm flex items-center justify-between font-semibold'
