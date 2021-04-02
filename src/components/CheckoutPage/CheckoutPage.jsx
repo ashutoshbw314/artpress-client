@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import NavBar from "../shared-components/NavBar/NavBar";
 import SquareSpinner from "../shared-components/Spinners/SquareSpinner";
 import {getProduct, placeOrder} from "../../API/API";
@@ -8,6 +8,7 @@ import {useAuth} from "../../hooks/useAuth";
 function CheckoutPage() {
   const {id} = useParams();
   const auth = useAuth();
+  const history = useHistory();
   const [product, setProduct] = useState(null);
   useEffect(() => {
     const fetchProduct = async () => {
@@ -31,7 +32,11 @@ function CheckoutPage() {
       date: new Date().getTime(),
       email: auth.user.email
     }
-    placeOrder(order);
+    placeOrder(order).then(result => {
+      history.push('/orders')
+    }).catch(err => {
+      console.log(err)
+    });
   }
 
   return (

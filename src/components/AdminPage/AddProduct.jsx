@@ -3,7 +3,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -49,7 +48,27 @@ function AddProduct() {
       .then(function (response) {
         data.imgURL = response.data.data.display_url;
         data.uid = auth.user.uid;
-        addProduct(data);
+        addProduct(data).then(res => {
+          toast.info("Artwork saved successfully!", {
+            position: "bottom-left",
+            autoClose: false,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }).catch(err => {
+          toast.error(err.message, {
+            position: "bottom-left",
+            autoClose: false,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -59,6 +78,15 @@ function AddProduct() {
 
   return (
     <div>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
       <h1 className='my-3 text-4xl font-bold text-indigo-800'>Add Artwork</h1>
       <form 
         className='space-y-3'
