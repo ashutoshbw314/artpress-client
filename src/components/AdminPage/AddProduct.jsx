@@ -59,7 +59,7 @@ function AddProduct() {
 
   return (
     <div>
-      <h1 className='mb-5 text-4xl font-bold'>Add Artwork</h1>
+      <h1 className='my-3 text-4xl font-bold text-gray-800'>Add Artwork</h1>
       <form 
         className='space-y-3'
         onSubmit={handleSubmit(onSubmit)}

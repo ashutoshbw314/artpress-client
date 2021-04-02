@@ -19,7 +19,7 @@ function NavBar(props) {
   }
 
   return (
-    <div className=''>
+    <div className='bg-yellow-600'>
       <header className='flex flex-wrap items-center px-6 bg-white bg-opacity-80 lg:px-6 lg:py-0'>
         <div className='flex items-center justify-center flex-1 my-2 lg:my-0 lg:justify-start'>
           <Link to='/'>

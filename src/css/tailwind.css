@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.w-screen-le-72 {
+  width: calc(100vw - 72px);
+}
+
+.h-screen-le-44 {
+  height: calc(100vh - 44px);
+}
+
+.h-screen-le-40 {
+  height: calc(100vh - 40px);
+}
+
+.h-screen-le-108 {
+  height: calc(100vh - 108px);
+}
+
+.h-screen-le-104 {
+  height: calc(100vh - 104px);
+}
+
 @layer base {
   [type='text'],
   [type='email'],

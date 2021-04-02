@@ -34,34 +34,12 @@ export const placeOrder = (order) => {
   })  
 };
 
-/*export const createSomething = (myObj) => {
-  return fetch(endPoints.create, {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(myObj)
-  })  
-};
-
-export const updateSomething = (myObj, id) => {
-  return fetch(`${endPoints.base}/${id}`, {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(myObj)
-  })  
-};
-
-export const deleteSomething = (id) => {
-  return fetch(`${endPoints.base}/${id}`, {
+export const deleteProduct = (id) => {
+  return fetch(`${BASE_API_URL}/products/${id}`, {
     method: "DELETE",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json"
     }
   })  
-};*/
+};
