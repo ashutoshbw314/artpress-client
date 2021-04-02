@@ -29,20 +29,6 @@ function AddProduct() {
       min(5, "Too little").
       max(5000, 'Very costly!'),
   });
-  {/*useEffect(() => {
-    const fetchBooks = async () => {
-      const res = await fetch(`http://localhost:3000/api/all`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${sessionStorage.getItem("token")}`
-        }
-      });
-      const books = await res.json();
-      setBooks(books);
-    }
-    setTimeout(fetchBooks, 500);
-  }, [])*/}
 
   const fileRef = useRef(null);
   const {register, handleSubmit, errors} = useForm({
@@ -71,30 +57,17 @@ function AddProduct() {
     }
   };
 
-  const handleImageUpload = event => {
-    console.log(event.target.files[0])
-    const imageData = new FormData();
-    imageData.set("key", "5faa7f167ad100e10e4218fa2160a9d4");
-    imageData.append("image", event.target.files[0]);
-
-    axios.post('https://api.imgbb.com/1/upload', imageData)
-    .then(function (response) {
-      console.log(response.data.data.display_url);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
   return (
     <div>
-      <h1>Add your Art piece</h1>
-          <form 
-            className='space-y-3'
-            onSubmit={handleSubmit(onSubmit)}
-          >
+      <h1 className='mb-5 text-4xl font-bold'>Add Artwork</h1>
+      <form 
+        className='space-y-3'
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className='p-5 rounded-lg shadow-md space-y-3 lg:space-y-0'>
+          <div className='space-y-3 lg:space-y-0 lg:mb-4 lg:grid lg:grid-cols-2 lg:gap-4'>
             <label className='block'>
-              <span className=''>Name of Artwork</span>
+              <span className='font-bold text-gray-800 text-md'>Name of Artwork</span>
               <input 
                 className=''
                 name="productName"
@@ -105,7 +78,7 @@ function AddProduct() {
               {errors.productName && <p className='px-2 text-sm text-red-500'>{errors.productName.message}</p>}
             </label>
             <label className='block'>
-              <span className=''>Artist's Name</span>
+              <span className='font-bold text-gray-800 text-md'>Artist's Name</span>
               <input 
                 className=''
                 name="artistName"
@@ -115,8 +88,10 @@ function AddProduct() {
               />
               {errors.artistName && <p className='px-2 text-sm text-red-500'>{errors.artistName.message}</p>}
             </label>
+          </div>
+          <div className='lg:grid lg:grid-cols-2 lg:gap-4 space-y-3 lg:space-y-0'>
             <label className='block'>
-              <span className=''>Price</span>
+              <span className='font-bold text-gray-800 text-md'>Price</span>
               <input 
                 className=''
                 name="price"
@@ -127,7 +102,7 @@ function AddProduct() {
               {errors.price && <p className='px-2 text-sm text-red-500'>{errors.price.message}</p>}
             </label>
             <label className='block'>
-              
+              <span className='font-bold text-gray-800 text-md'>Photo</span>
               <p className='flex block p-3 rounded-lg transform transition bg-indigo-100 hover:bg-indigo-200 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider shadow cursor-pointer w-full'>
                 <svg className='w-6 mr-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -146,11 +121,15 @@ function AddProduct() {
               {fileError && <p className='px-2 text-sm text-red-500'>{fileError}</p>}
               {fileName && <p className='px-2 text-md'>{fileName}</p>}
             </label>
-            <input
-              className='block py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer w-full'
-              type='submit'
-              value='Save'/>
-          </form>
+          </div>
+        </div>
+        <div className='flex flex-row-reverse'>
+          <input
+            className='block py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer px-6'
+            type='submit'
+            value='Save'/>
+        </div>
+      </form>
     </div>
   )
 }

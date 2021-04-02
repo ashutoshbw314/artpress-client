@@ -8,6 +8,7 @@ import SignInPage from './SignInPage/SignInPage';
 import SignUpPage from './SignUpPage/SignUpPage';
 import AdminPage from './AdminPage/AdminPage';
 import CheckoutPage from './CheckoutPage/CheckoutPage';
+import OrdersPage from './OrdersPage/OrdersPage';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path='/checkout/:id'>
             <CheckoutPage />
+          </PrivateRoute>
+          <PrivateRoute exact path='/orders'>
+            <OrdersPage />
           </PrivateRoute>
         </Switch>
       </Router>

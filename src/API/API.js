@@ -19,6 +19,20 @@ export const addProduct = (productData) => {
   })  
 };
 
+export const getOrders = (uid) => {
+  return fetch(BASE_API_URL + `/orders/${uid}`).then(res => res.json())
+};
+
+export const placeOrder = (order) => {
+  return fetch(BASE_API_URL + '/orders', {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(order)
+  })  
+};
 
 /*export const createSomething = (myObj) => {
   return fetch(endPoints.create, {
