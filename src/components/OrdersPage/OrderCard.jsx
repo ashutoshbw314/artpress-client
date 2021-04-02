@@ -20,7 +20,7 @@ function OrderCard({order}) {
   }
 
   return (
-    <div className='p-4 my-5 border-4 border-white rounded-lg shadow-md lg:p-2 grid grid-cols-1 lg:grid-cols-4 hover:scale-105 hover:border-indigo-400 transform transition-all'>
+    <div className='p-4 my-2 border-2 border-indigo-800 rounded-lg shadow-md bg-card lg:p-2 grid grid-cols-1 lg:grid-cols-4 hover:scale-105 transform transition-all'>
       <div className='mb-3 grid grid-cols-2 lg:mb-0'>
         <img className='object-cover w-full h-40 shadow-md rounded-md' src={order.imageURL} alt={order.name} />
         <div className='flex flex-col justify-between px-3 py-6'>

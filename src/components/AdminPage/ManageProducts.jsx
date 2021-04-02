@@ -31,7 +31,7 @@ function ManageProducts() {
 
   return (
     <div className=''>
-      <h1 className='my-3 text-4xl font-bold text-gray-800'>Manage Artworks</h1>
+      <h1 className='my-3 text-4xl font-bold text-indigo-800'>Manage Artworks</h1>
       <div className='overflow-auto w-screen-le-72 lg:w-full h-screen-le-108'>
         <table className='w-full bg-white shadow-lg '>
           <thead className='p-1 bg-gray-200'>

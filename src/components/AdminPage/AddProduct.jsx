@@ -59,12 +59,12 @@ function AddProduct() {
 
   return (
     <div>
-      <h1 className='my-3 text-4xl font-bold text-gray-800'>Add Artwork</h1>
+      <h1 className='my-3 text-4xl font-bold text-indigo-800'>Add Artwork</h1>
       <form 
         className='space-y-3'
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className='p-5 rounded-lg shadow-md space-y-3 lg:space-y-0'>
+        <div className='p-5 rounded-lg shadow-md bg-card space-y-3 lg:space-y-0'>
           <div className='space-y-3 lg:space-y-0 lg:mb-4 lg:grid lg:grid-cols-2 lg:gap-4'>
             <label className='block'>
               <span className='font-bold text-gray-800 text-md'>Name of Artwork</span>
@@ -103,7 +103,7 @@ function AddProduct() {
             </label>
             <label className='block'>
               <span className='font-bold text-gray-800 text-md'>Photo</span>
-              <p className='flex block p-3 rounded-lg transform transition bg-indigo-100 hover:bg-indigo-200 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider shadow cursor-pointer w-full'>
+              <p className='flex block p-3 rounded-lg transform transition bg-indigo-300 hover:bg-indigo-200 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider shadow cursor-pointer w-full'>
                 <svg className='w-6 mr-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>

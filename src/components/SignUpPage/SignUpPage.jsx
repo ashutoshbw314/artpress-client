@@ -129,9 +129,9 @@ function SignUp() {
           </form>
         </div>
         <div className='flex items-center justify-center w-full my-3'>
-          <hr className='inline-block w-full ml-12 mr-1 border-gray-300'/>
-          <span className='text-white'>Or</span>
-          <hr className='inline-block w-full ml-1 mr-12 border-gray-300' />
+          <hr className='inline-block w-full ml-12 mr-1 border-indigo-800'/>
+          <span className='text-gray-800'>Or</span>
+          <hr className='inline-block w-full ml-1 mr-12 border-indigo-800' />
         </div>
         <div 
           className='block bg-white bg-opacity-75 py-1 rounded-full transform transition border border-indigo-300  hover:bg-gray-100 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider text-sm text-gray-700 shadow cursor-pointer w-3/4 mx-auto text-sm flex items-center justify-between font-semibold'

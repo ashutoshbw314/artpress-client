@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import userLogo from '/img/logos/user.svg';
+import brandLogo from '/img/logos/brand-logo.svg';
 import { useHistory } from 'react-router-dom';
 
 function NavBar(props) {
@@ -18,14 +19,14 @@ function NavBar(props) {
   }
 
   return (
-    <div className='bg-yellow-600'>
-      <header className='flex flex-wrap items-center px-6 bg-white bg-opacity-80 lg:px-6 lg:py-0'>
+    <div className='bg-yellow-600' style={{backgroundImage: 'linear-gradient(to right, #acb6e5, #74ebd5 )'}}>
+      <header className='flex flex-wrap items-center px-6 lg:px-6 lg:py-0'>
         <div className='flex items-center justify-center flex-1 my-2 lg:my-0 lg:justify-start'>
           <Link to='/'>
-            🎨
+            <img className='w-6' src={brandLogo} alt='heo'/>
           </Link>
           <Link to='/'>
-            <h2 className='ml-3 font-bold'>Artpress</h2>
+            <h2 className='ml-3 font-bold text-gray-700'>Artpress</h2>
           </Link>
         </div>
 
