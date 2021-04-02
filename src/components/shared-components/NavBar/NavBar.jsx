@@ -23,9 +23,11 @@ function NavBar(props) {
       <header className='flex flex-wrap items-center px-6 bg-white bg-opacity-80 lg:px-6 lg:py-0'>
         <div className='flex items-center justify-center flex-1 my-2 lg:my-0 lg:justify-start'>
           <Link to='/'>
-            <img src={brandLogo} className='h-10 py-1 ' /> 
+            🎨
           </Link>
-          <h2 className='ml-3 font-bold'>Artpress</h2>
+          <Link to='/'>
+            <h2 className='ml-3 font-bold'>Artpress</h2>
+          </Link>
         </div>
 
         <svg onClick={() => setVerticalMenu(!verticalMenu)} className={`${verticalMenu ? 'hidden' : ''} block text-gray-900 cursor-pointer fill-current lg:hidden`} xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><title>menu</title><path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z'></path></svg>
