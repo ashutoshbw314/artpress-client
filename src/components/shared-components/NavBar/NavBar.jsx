@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { useAuth } from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import userLogo from '/img/logos/user.svg';
-import brandLogo from '/img/logos/brand-logo.svg';
 import { useHistory } from 'react-router-dom';
 
 function NavBar(props) {
