@@ -9,4 +9,4 @@ However currently in Artpress anyone can only:
 * Delete previously added artworks
 
 
-Click [here](https://github.com/Porgramming-Hero-web-course/full-stack-server-ashutoshbw314) to see the server side code of this project.
+Click [here](https://github.com/ashutoshbw314/artpress-server) to see the server side code of this project.
